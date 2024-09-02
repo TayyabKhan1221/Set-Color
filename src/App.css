@@ -1,0 +1,159 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: #4F46E5;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  letter-spacing: 1.5px;
+}
+
+/* Main Input Area */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Input and Label Styles */
+label {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #2D2D2D;
+  color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #4F46E5;
+  outline: none;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+input[type="color"]:focus {
+  border-color: #4F46E5;
+  outline: none;
+}
+
+/* Button Styles */
+button, .Button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4F46E5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover, .Button:hover {
+  background-color: #3b3aee;
+  transform: scale(1.05);
+}
+
+button:active, .Button:active {
+  transform: scale(0.98);
+}
+
+/* Grid for Displaying Data */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-text {
+  font-size: 1.2rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Remove Button in Card */
+.remove-button {
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #c53030;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button, .Button {
+    width: 100%;
+    text-align: center;
+  }
+}
