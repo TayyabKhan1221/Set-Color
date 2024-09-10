@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
+import "./App.css"
 import Button from './component/Button';
 import Time from './component/Time';
-import "./App.css";
 
-function App() {
+const App = () => {
   const [text, setText] = useState("");
   const [color, setColor] = useState("#000000");
   const [bgcolor, setBgcolor] = useState("#ffffff");
@@ -15,77 +15,75 @@ function App() {
         text: text,
         color: color,
         bgcolor: bgcolor,
-        createAt: Date.now(), // Ensure consistency with property name
+        createdAt: Date.now(),
       };
       setData([...data, obj]);
-      setText("");
+      setText(""); // Clear the input field after adding
     }
   };
 
-  const onRemove = (createAt) => {
-    setData(data.filter((item) => item.createAt !== createAt));
+  const onRemove = (createdAt) => {
+    setData(data.filter((item) => item.createdAt !== createdAt));
   };
 
-  const handleKeypress = (e) => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       addData();
     }
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-center text-3xl font-bold mb-6">Set Color</h1>
-      <div className="main space-y-4">
-        <label className="block">
-          Enter Text
+    <div className="container">
+      <div className="card">
+        <h1 className="title">Set Color</h1>
+        <div className="form-group">
+          <label>Enter Text</label>
           <input
             value={text}
             type="text"
             onChange={(e) => setText(e.target.value)}
-            onKeyPress={handleKeypress}
-            className="bg-gray-900 text-white border border-gray-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Type something..."
+            onKeyPress={handleKeyPress}
           />
-        </label>
-        <label className="block">
-          Text Color
+        </div>
+        <div className="form-group">
+          <label>Text Color</label>
           <input
             value={color}
             type="color"
             onChange={(e) => setColor(e.target.value)}
-            className="w-full h-12 border border-gray-600 rounded-lg cursor-pointer"
           />
-        </label>
-        <label className="block">
-          Background Color
+        </div>
+        <div className="form-group">
+          <label>Background Color</label>
           <input
             value={bgcolor}
             type="color"
             onChange={(e) => setBgcolor(e.target.value)}
-            className="w-full h-12 border border-gray-600 rounded-lg cursor-pointer"
           />
-        </label>
+        </div>
+        <div className="button-container">
+          <Button
+            bgcolor="#4F46E5"
+            content="Add"
+            onclick={addData}
+            className="button"
+          />
+        </div>
       </div>
-      <div className="flex justify-center mt-4">
-        <Button
-          bgcolor="#4F46E5"
-          content="Add"
-          onClick={addData}
-          className="bg-blue-600 text-white py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
-        />
-      </div>
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl">
+
+      <div className="data-container">
         {data.map((item) => (
           <Time
-            key={item.createAt} // Use createAt as key
+            key={item.createdAt}
             data={item}
             removeCard={onRemove}
-            className="transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            className="data-item"
+            style={{ "--bgcolor": item.bgcolor, "--color": item.color }}
           />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default App;
